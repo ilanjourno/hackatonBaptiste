@@ -15,6 +15,11 @@ Encore
         }
 
         options['process.env'].GOOGLE_API_KEY = JSON.stringify(env.parsed.GOOGLE_API_KEY);
+        
+        options['process.env'].WEATHER_API_KEY = JSON.stringify(env.parsed.WEATHER_API_KEY);
+        
+        options['process.env'].BLAGUES_API_TOKEN = JSON.stringify(env.parsed.BLAGUES_API_TOKEN);
+
     })
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')

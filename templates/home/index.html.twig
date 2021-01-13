@@ -1,7 +1,104 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello HomeController!{% endblock %}
-
+{% block stylesheets %}
+    <link href="http://openweathermap.org/img/wn/10d@2x.png"/> 
+{% endblock %}
 {% block body %}
+    <div style="display: none">
+        <input
+        id="origin-input"
+        class="controls form-control m-2"
+        type="text"
+        placeholder="Départ"
+        />
+
+        <input
+        id="destination-input"
+        class="controls form-control m-2"
+        type="text"
+        placeholder="Arriver"
+        />
+        <div id="mode-selector" class="controls">
+            <label for="changemode-walking">A pied</label>
+            <input type="radio" name="type" id="changemode-walking" checked="checked"/>
+
+            <label for="changemode-bicycling">En vélo</label>
+            <input type="radio" name="type" id="changemode-bicycling" />
+
+            <label for="changemode-transit">En transport</label>
+            <input type="radio" name="type" id="changemode-transit" />
+
+            <label for="changemode-driving">En voiture</label>
+            <input type="radio" name="type" id="changemode-driving" />
+        </div>
+        <div id="weather-info-origin" class="m-2">
+            <table class="table">
+                <thead>
+                    <tr class="table-warning">
+                        <th colspan="2" id="weather-info-origin-city" class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-warning">
+                        <td colspan="2" class="text-center"><img class="float-righ" alt="Weather Icon" id="weather-info-origin-icon"/></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>Temps actuel :</th>
+                        <td id="weather-info-origin-temp"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>Pays</th>
+                        <td id="weather-info-origin-country"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>Degrer</th>
+                        <td id="weather-info-origin-degrer"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>Humiditer</thead>
+                        <td id="weather-info-origin-humidity"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="weather-info-destination" class="m-2">
+            <table class="table">
+                <thead>
+                    <tr class="table-warning">
+                        <th colspan="2" id="weather-info-destination-city" class="text-center"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-warning">
+                        <td colspan="2" class="text-center"><img class="float-righ" alt="Weather Icon" id="weather-info-destination-icon"/></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>Temps actuel :</th>
+                        <td id="weather-info-destination-temp"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>Pays</th>
+                        <td id="weather-info-destination-country"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>Degrer</th>
+                        <td id="weather-info-destination-degrer"></td>
+                    </tr>
+                    <tr class="table-warning">
+                        <th>Humiditer</thead>
+                        <td id="weather-info-destination-humidity"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="right-panel"></div>
+        <p id="conseil" class="m-2 form-control"></p>
+        <div id="blagues">
+            <h4>Voici quelques blagues :</h4>
+            <p id="question" class="form-control"></p>
+            <p id="reponse" class="form-control"></p>
+        </div>
+    </div>
     <div id="map"></div>
 {% endblock %}
